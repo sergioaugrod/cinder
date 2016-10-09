@@ -6,11 +6,11 @@
 
 (def ^:private connections (atom {}))
 
-(defn new-connection
+(defn new-connection!
   [session channel]
   (swap! connections assoc session channel))
 
-(defn send-data
+(defn send-data!
   [message]
   (doseq [[session channel] @connections]
     (if (.isOpen session)

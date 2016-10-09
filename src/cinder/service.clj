@@ -22,7 +22,7 @@
 ; Web Sockets
 
 (def ws-paths
-  {"/sensors" {:on-connect (ws/start-ws-connection sensors-ws/new-connection)}})
+  {"/sensors" {:on-connect (ws/start-ws-connection sensors-ws/new-connection!)}})
 
 ; Listeners
 
@@ -31,7 +31,7 @@
   (let [channel (sensors-evt/execute)]
     (async/thread
       (while true
-        (sensors-ws/send-data (async/<!! channel))))))
+        (sensors-ws/send-data! (async/<!! channel))))))
 
 ; Service Configuration
 

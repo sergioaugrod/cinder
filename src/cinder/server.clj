@@ -27,7 +27,7 @@
   [& args]
   (println "\nListening sensors...")
   (service/listener-sensors)
-  (println "\nConnecting to telegram...")
+  (println "Connecting to telegram...")
   (telegram/start)
-  (println "\nCreating your server...")
+  (println "Creating your server...\n")
   (server/start runnable-service))
